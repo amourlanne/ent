@@ -128,6 +128,7 @@
     "build": "webpack --config config/webpack/production.config.js",
     "start": "ts-node-dev src/server.ts",
     "test": "jest ./tests",
+
     "serve": "ts-node src/server.ts",
     "migration:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n",
     "migration:up": "ts-node ./node_modules/typeorm/cli.js migration:run",
