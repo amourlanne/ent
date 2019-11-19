@@ -1,0 +1,19 @@
+entity: User
+parameters: {}
+items:
+  admin:
+    username: 'admin'
+    firstName: '{{name.firstName}}'
+    lastName: '{{name.lastName}}'
+    role: 'ROLE_ADMIN'
+    email: 'admin@smarts.com'
+    password: 'admin'
+    activated: true
+  user{1..10}:
+    username: 'user($current)'
+    firstName: '{{name.firstName}}'
+    lastName: '{{name.lastName}}'
+    role: 'ROLE_USER'
+    email: 'user($current)@smarts.com'
+    password: 'user($current)'
+    activated: true

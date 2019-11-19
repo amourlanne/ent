@@ -1,0 +1,12 @@
+entity: Student
+parameters: {}
+items:
+  student{1..10}:
+    username: 'student($current)'
+    firstName: '{{name.firstName}}'
+    lastName: '{{name.lastName}}'
+    role: 'ROLE_USER'
+    email: 'student($current)@smarts.com'
+    password: 'student($current)'
+    activated: true
+    studentCode: ($current)

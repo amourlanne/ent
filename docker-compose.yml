@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST
+      - PMA_USER
+      - PMA_PASSWORD
+    restart: always
+    ports:
+      - '8080:80'
+    volumes:
+      - /sessions
+
+  maildev:
+    image: djfarrelly/maildev
+    ports:
+      - '1080:80'
+      - '1025:25'
+
+  redis:
+    image: redis:5.0.0-alpine
+    ports:
+      - "6379:6379"
+volumes:
+  mysql_data:
